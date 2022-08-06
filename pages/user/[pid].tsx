@@ -1,12 +1,11 @@
 import Cookies from "cookies";
 import type { NextPage, GetServerSideProps } from "next";
 import { useState, useEffect } from "react";
-
 import type { AuthContext, Balances, Profile } from "../../types/index";
-import { getBalanceForAccounts } from "../../helpers/accounts";
-import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { useAccount, useConnect } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import styles from "../../styles/User.module.css";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const UserProfile: NextPage<{
   userData: Profile;
@@ -19,6 +18,7 @@ const UserProfile: NextPage<{
   });
   const [isMounted, setIsMounted] = useState(false);
   const [iban, setIban] = useState("1234 1234 1234 1234");
+  const [qr, setQR] = useState();
 
   useEffect(() => {
     if (!isConnected) {
@@ -44,26 +44,49 @@ const UserProfile: NextPage<{
     fetchProfile();
 
     setIsMounted(true);
+
+    const generateQrCode = require("sepa-payment-qr-code");
+
+    setQR(
+      generateQrCode({
+        name: "Red Cross of Belgium",
+        iban: "BE72000000001616",
+        amount: 123.45,
+        reference: "Urgency fund",
+        information: "Sample QR code",
+      })
+    );
   }, []);
 
   return (
     <div className={styles.frame}>
-      <header className={styles.header}>
-        <img
-          className={styles.logo}
-          src="https://app.1inch.io/assets/images/logo_small.svg#logo_small"
-        />
-        <span className={styles.selectedAddress}>{isMounted && address}</span>
-      </header>
-      <h1>Be your own bank.</h1>
-      <div className={styles.card}>
-        <label>Full Name</label>
-        <div className={styles.card_name}>JOHN DOE</div>
-        <label>IBAN</label>
-        <div className={styles.card_iban}>{iban}</div>
-      </div>
-      <h2>The Euro in your wallet. Non-custodial & regulated.</h2>
+      <div className={styles.tophalf}>
+        <header className={styles.header}>
+          <span className={styles.selectedAddress}>{isMounted && address}</span>
 
+          <img
+            className={styles.logo}
+            src="https://app.1inch.io/assets/images/logo_small.svg#logo_small"
+          />
+          <h1>Be your own bank.</h1>
+        </header>
+        <div className={styles.card}>
+          <label>Full Name</label>
+          <div className={styles.card_name}>JOHN DOE</div>
+          <label>IBAN</label>
+          <div className={styles.card_iban}>
+            {iban || "1234 1234 1234 1234"}
+          </div>
+        </div>
+        <h2>The Euro in your wallet. Non-custodial & regulated.</h2>
+      </div>
+      <div className={styles.qr}>
+        <CopyToClipboard text={qr} onCopy={console.log} className={styles.copy}>
+          <div>
+            <img src={`/api/qr?message=${encodeURI(qr)}`} alt="qrcode" />
+          </div>
+        </CopyToClipboard>
+      </div>
       <footer className={styles.footer}>
         <p>
           Powered by <strong>Monerium</strong>

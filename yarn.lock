@@ -2354,6 +2354,11 @@ hmac-drbg@^1.0.1:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
+iban@0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/iban/-/iban-0.0.11.tgz#b67e642b6f1d96aa25e280fbc30ecd974c2fa073"
+  integrity sha512-9X0t/S+c6vBdgq3Hrt55HAonXfPmGuO/Vz507lXwQh+F5/0psvZWfh9jD14NvNYAfggk8WrYCWNvLVpCWLWdUQ==
+
 ieee754@^1.1.13, ieee754@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
@@ -2433,6 +2438,11 @@ is-core-module@^2.8.1, is-core-module@^2.9.0:
   integrity sha512-+5FPy5PnwmO3lvfMb0AsoPaBG+5KHUI0wYFXOtYPnVVVspTFUuMZNfNaNVRt3FZadstu2c8x23vykRW/NBoU6A==
   dependencies:
     has "^1.0.3"
+
+is-currency-code@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/is-currency-code/-/is-currency-code-1.2.0.tgz#4df40b8756443ff165c9166f88a42341efb42876"
+  integrity sha512-rm+zNay1cLXY2Nw7TE5mpR3SY6Uuxc7V7VgTqWBK7k3IkcxqPDP25Ar0a8Y6kuE9EnIFlQA93u3E5ni73AzKkA==
 
 is-date-object@^1.0.1:
   version "1.0.5"
@@ -3070,6 +3080,11 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
+qr-image@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/qr-image/-/qr-image-3.2.0.tgz#9fa8295beae50c4a149cf9f909a1db464a8672e8"
+  integrity sha512-rXKDS5Sx3YipVsqmlMJsJsk6jXylEpiHRC2+nJy66fxA5ExYyGa4PqwteW69SaVmAb2OQ18HbYriT7cGQMbduw==
+
 qrcode@1.4.4:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/qrcode/-/qrcode-1.4.4.tgz#f0c43568a7e7510a55efc3b88d9602f71963ea83"
@@ -3110,6 +3125,14 @@ randombytes@^2.1.0:
   integrity sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==
   dependencies:
     safe-buffer "^5.1.0"
+
+react-copy-to-clipboard@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-copy-to-clipboard/-/react-copy-to-clipboard-5.1.0.tgz#09aae5ec4c62750ccb2e6421a58725eabc41255c"
+  integrity sha512-k61RsNgAayIJNoy9yDsYzDe/yAZAzEbEgcz3DZMhF686LEyukcE1hzurxe85JandPUG+yTfGVFzuEw3xt8WP/A==
+  dependencies:
+    copy-to-clipboard "^3.3.1"
+    prop-types "^15.8.1"
 
 react-dom@18.2.0:
   version "18.2.0"
@@ -3303,6 +3326,14 @@ semver@^7.3.7:
   integrity sha512-QlYTucUYOews+WeEujDoEGziz4K6c47V/Bd+LjSSYcA94p+DmINdf7ncaUinThfvZyu13lN9OY1XDxt8C0Tw0g==
   dependencies:
     lru-cache "^6.0.0"
+
+sepa-payment-qr-code@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/sepa-payment-qr-code/-/sepa-payment-qr-code-1.0.0.tgz#0ddaf9c508ccdd84590ccf5c8d6333c34bb134dd"
+  integrity sha512-mn6ce5cE+aR8QXm7mPSUuDDlWsG5yOMg6t/3iKqre1JaAG3p22zKesmpJ01kmtYJ/tc8jiupFtMSLILitRkR7w==
+  dependencies:
+    iban "0.0.11"
+    is-currency-code "^1.2.0"
 
 set-blocking@^2.0.0:
   version "2.0.0"

@@ -3,9 +3,9 @@
   flex-direction: column;
   background-color: rgb(32, 48, 77);
   color: #FFF;
-  height:100vh;
+  min-height:100vh;
   font-family: Arial, sans-serif;
-
+  justify-content: space-between;
 }
 
 .card label {
@@ -17,15 +17,16 @@
 .frame h1 {
 text-align: center;
 font-size: 2rem;
+margin: 1rem 0;
 
 }
-.frame > h2 {
-  padding: 0rem 3rem;
-  font-size: 0.6rem;
+.frame  h2 {
+  padding: 0rem 3rem 1rem;
+  font-size: 0.75rem;
   text-align: center;
   font-weight: 400;
 }
-.frame > h3 {
+.frame  h3 {
   padding: 0 3rem;
   font-size: 1rem;
   text-align: center;
@@ -34,10 +35,11 @@ font-size: 2rem;
 }
 
 
+
 .header {
   display: flex;
   flex-direction: column;
-  height: 11rem;
+  /* height: 11rem; */
 }
 
 .selectedAddress {
@@ -48,7 +50,8 @@ font-size: 2rem;
 }
 
 .logo {
-  position: absolute;
+  /* position: absolute; */
+  margin: 1rem;
   width: 5rem;
   top: 4rem;
   text-align: center;
@@ -58,9 +61,9 @@ font-size: 2rem;
 }
 
 .card {
+  min-height: 10rem;
   position: relative;
-  margin-top: 4rem;
-  height: 12rem;
+  height: 10rem;
   width: 90%;
   border-radius: 8px;
   align-self: center;
@@ -90,10 +93,38 @@ font-size: 2rem;
 }
 
 .footer {
-  margin: 2rem;
+  /* margin: 0 2rem 2rem; */
   text-align: center;
-  flex: 1;
+  /* flex: 1 1; */
   flex-direction: column;
   display: flex;
   justify-content: flex-end;
+}
+
+.qr {
+  display: flex;
+  flex: 1 0;
+  justify-content: center;
+  width: 80%;
+  align-self: center;
+}
+
+.qr img {
+  /* margin: 2rem; */
+  /* max-width: 180px; */
+  display: flex;
+  align-self: center;
+  width: 100%;
+}
+
+
+.tophalf { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.copy {
+  position: relative;
 }
