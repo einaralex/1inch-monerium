@@ -48,7 +48,11 @@ const Home: NextPage<{ params: any }> = ({ params }) => {
 
   return (
     <div className={styles.main}>
-      <button className={styles.ibanButton} onClick={() => emiConnect()}>
+      <button
+        style={{ margin: "3rem" }}
+        className={styles.ibanButton}
+        onClick={() => emiConnect()}
+      >
         <Image src="/monerium.svg" alt="me" width="24" height="24" />
         Create IBAN
       </button>
