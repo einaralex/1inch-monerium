@@ -61,7 +61,7 @@ font-size: 2rem;
   position: relative;
   margin-top: 4rem;
   height: 12rem;
-  width: 75%;
+  width: 90%;
   border-radius: 8px;
   align-self: center;
   display: flex;
@@ -81,7 +81,7 @@ font-size: 2rem;
 }
 .card_iban {
   padding: 0rem 1rem 1rem 1rem;
-  /* letter-spacing: 0.05rem; */
+  letter-spacing: 0.05rem;
   font-family: Tahoma, sans-serif;
   -webkit-user-select: all;  /* Chrome all / Safari all */
   -moz-user-select: all;     /* Firefox all */
