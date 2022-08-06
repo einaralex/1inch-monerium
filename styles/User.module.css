@@ -1,19 +1,99 @@
-.table {
-  border-spacing: 0;
-}
-.table thead {
-  border-color:#6fbf7e;
-  background-color: #6fbf7e;
-    margin-top: 8px;
+.frame {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(32, 48, 77);
+  color: #FFF;
+  height:100vh;
+  font-family: Arial, sans-serif;
+
 }
 
-.table th {
-  height: 36px;
-}
-.table td {
-  height: 24px;
+.card label {
+  font-size: 55%;
+  margin-left: 1rem;
+  color: #ffffffdb
 }
 
-.balances {
-  width: 100px;
+.frame h1 {
+text-align: center;
+font-size: 2rem;
+
+}
+.frame > h2 {
+  padding: 0rem 3rem;
+  font-size: 0.6rem;
+  text-align: center;
+  font-weight: 400;
+}
+.frame > h3 {
+  padding: 0 3rem;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 400;
+  
+}
+
+
+.header {
+  display: flex;
+  flex-direction: column;
+  height: 11rem;
+}
+
+.selectedAddress {
+  align-self: center;
+  font-size: 85%;
+  margin: 0.5rem;
+  color: #94a6c3;
+}
+
+.logo {
+  position: absolute;
+  width: 5rem;
+  top: 4rem;
+  text-align: center;
+  display: flex;
+  align-self: center;
+
+}
+
+.card {
+  position: relative;
+  margin-top: 4rem;
+  height: 12rem;
+  width: 75%;
+  border-radius: 8px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: rgb(216,33,34);
+  background: linear-gradient(20deg, rgba(216,33,34,1) 17%, rgba(255,217,35,1) 100%);
+  -webkit-box-shadow: 1px 1px 7px 0px rgb(148 166 195 / 45%);
+  box-shadow: 1px 1px 7px 0px rgb(148 166 195 / 45%);
+}
+
+.card_name {
+  /* justify-self: flex-end; */
+  padding: 0rem 1rem 0.5rem 1rem;
+  letter-spacing: 0.05rem;
+  font-family: Tahoma, sans-serif;
+}
+.card_iban {
+  padding: 0rem 1rem 1rem 1rem;
+  /* letter-spacing: 0.05rem; */
+  font-family: Tahoma, sans-serif;
+  -webkit-user-select: all;  /* Chrome all / Safari all */
+  -moz-user-select: all;     /* Firefox all */
+  -ms-user-select: all;      /* IE 10+ */
+  user-select: all;          /* Likely future */   
+}
+
+.footer {
+  margin: 2rem;
+  text-align: center;
+  flex: 1;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-end;
 }

@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 
 import type { AuthContext, Balances, Profile } from "../../types/index";
 import { getBalanceForAccounts } from "../../helpers/accounts";
+import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { InjectedConnector } from "wagmi/connectors/injected";
 import styles from "../../styles/User.module.css";
 
 const UserProfile: NextPage<{
@@ -11,64 +13,62 @@ const UserProfile: NextPage<{
   userAuth: AuthContext;
   token: any;
 }> = ({ userData, userAuth, token }) => {
-  const [accounts, setAccounts] = useState(userData.accounts);
+  const { address, isConnected } = useAccount();
+  const { connect } = useConnect({
+    connector: new InjectedConnector(),
+  });
+  const [isMounted, setIsMounted] = useState(false);
+  const [iban, setIban] = useState("1234 1234 1234 1234");
 
   useEffect(() => {
-    const fetchBalance = async () => {
+    if (!isConnected) {
+      connect();
+    }
+    const fetchProfile = async () => {
       // Fetching balances can take some time, therefore we fetch it after the initial rendering
-      return await fetch(
-        `https://api.monerium.dev/profiles/${userData.id}/balances`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      ).then(async (data) => {
-        const balances: Balances[] = await data.json();
-        setAccounts(getBalanceForAccounts(accounts, balances) as any);
-        return balances;
+      return await fetch(`https://api.monerium.dev/profiles/${userData.id}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then(async (data) => {
+        const profile: Balances[] = await data.json();
+        setIban(
+          profile?.accounts?.find(
+            (a) => a.address === address && a?.iban !== undefined
+          )?.iban
+        );
+        return profile;
       });
     };
-    fetchBalance();
+    fetchProfile();
+
+    setIsMounted(true);
   }, []);
 
   return (
-    <div>
-      <h3>👤 {userAuth.name}</h3>
-      <h4>✉️ {userAuth.email}</h4>
-      <p>
-        KYC:{" "}
-        {userData &&
-        userData.kyc.state === "confirmed" &&
-        userData.kyc.outcome === "approved"
-          ? "👍"
-          : "👎"}
-      </p>
-      <table className={styles.table} style={{ textAlign: "left" }}>
-        <thead>
-          <tr>
-            <th className={styles.balances}>balance</th>
-            <th>address</th>
-            <th>network</th>
-            <th>iban</th>
-          </tr>
-        </thead>
-        <tbody>
-          {accounts?.map((a: any, i: number) => (
-            <tr key={i + a.currency + a.amount}>
-              <td>
-                {a.amount || 0} {a.currency}
-              </td>
-              <td>{a.address.slice(0, 6) + "..." + a.address.slice(-4)}</td>
-              <td>
-                {a.chain}:{a.network}
-              </td>
-              <td>{a.iban}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className={styles.frame}>
+      <header className={styles.header}>
+        <img
+          className={styles.logo}
+          src="https://app.1inch.io/assets/images/logo_small.svg#logo_small"
+        />
+        <span className={styles.selectedAddress}>{isMounted && address}</span>
+      </header>
+      <h1>Be your own bank.</h1>
+      <div className={styles.card}>
+        <label>Full Name</label>
+        <div className={styles.card_name}>JOHN DOE</div>
+        <label>IBAN</label>
+        <div className={styles.card_iban}>{iban}</div>
+      </div>
+      <h2>The Euro in your wallet. Non-custodial & regulated.</h2>
+
+      <footer className={styles.footer}>
+        <p>
+          Powered by <strong>Monerium</strong>
+        </p>
+      </footer>
     </div>
   );
 };
