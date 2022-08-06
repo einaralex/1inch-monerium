@@ -17,7 +17,7 @@ const UserProfile: NextPage<{
     connector: new InjectedConnector(),
   });
   const [isMounted, setIsMounted] = useState(false);
-  const [iban, setIban] = useState("1234 1234 1234 1234");
+  const [iban, setIban] = useState("IE 1234 1234 1234 1234");
   const [qr, setQR] = useState();
 
   useEffect(() => {
@@ -49,11 +49,11 @@ const UserProfile: NextPage<{
 
     setQR(
       generateQrCode({
-        name: "Red Cross of Belgium",
-        iban: "BE72000000001616",
+        name: "John Doe",
+        iban: iban || "IE 1234 1234 1234 1234",
         amount: 123.45,
-        reference: "Urgency fund",
-        information: "Sample QR code",
+        reference: "Salary",
+        information: "Powered by Monerium.",
       })
     );
   }, []);
@@ -75,10 +75,13 @@ const UserProfile: NextPage<{
           <div className={styles.card_name}>JOHN DOE</div>
           <label>IBAN</label>
           <div className={styles.card_iban}>
-            {iban || "1234 1234 1234 1234"}
+            {iban || "IE 1234 1234 1234 1234"}
           </div>
         </div>
-        <h2>The Euro in your wallet. Non-custodial & regulated.</h2>
+        <h2>
+          The Euro in your wallet.
+          <br /> Non-custodial & regulated.
+        </h2>
       </div>
       <div className={styles.qr}>
         <CopyToClipboard text={qr} onCopy={console.log} className={styles.copy}>
