@@ -79,8 +79,8 @@ const UserProfile: NextPage<{
           </div>
         </div>
         <h2>
-          The Euro in your wallet.
-          <br /> Non-custodial & regulated.
+          The <strong>Euro</strong> in your wallet.
+          <br /> Non-custodial <strong>&</strong> regulated.
         </h2>
       </div>
       <div className={styles.qr}>
