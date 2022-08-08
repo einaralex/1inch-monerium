@@ -1,6 +1,6 @@
 var qr = require("qr-image");
 
-export default function handler(req, res) {
+export default function handler(req: any, res: any) {
   var code = qr.image(decodeURI(req.query?.message), {
     type: "png",
     margin: 1,
