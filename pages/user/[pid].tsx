@@ -32,10 +32,10 @@ const UserProfile: NextPage<{
           Authorization: `Bearer ${token}`,
         },
       }).then(async (data) => {
-        const profile: Balances[] = await data.json();
+        const profile = await data.json();
         setIban(
           profile?.accounts?.find(
-            (a) => a.address === address && a?.iban !== undefined
+            (a: any) => a.address === address && a?.iban !== undefined
           )?.iban
         );
         return profile;
@@ -84,9 +84,12 @@ const UserProfile: NextPage<{
         </h2>
       </div>
       <div className={styles.qr}>
-        <CopyToClipboard text={qr} onCopy={console.log} className={styles.copy}>
-          <div>
-            <img src={`/api/qr?message=${encodeURI(qr)}`} alt="qrcode" />
+        <CopyToClipboard text={qr as unknown as string} onCopy={console.log}>
+          <div style={{ position: "relative" }}>
+            <img
+              src={`/api/qr?message=${encodeURI(qr as unknown as string)}`}
+              alt="qrcode"
+            />
           </div>
         </CopyToClipboard>
       </div>
