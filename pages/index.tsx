@@ -40,7 +40,7 @@ const Home: NextPage<{ params: any }> = ({ params }) => {
 
   const emiConnect = () => {
     router.push(
-      `https://sandbox.monerium.dev/partners/a8c3c65e-69a7-11ed-9804-163e4e07a3b0/auth?${new URLSearchParams(
+      `https://sandbox.monerium.dev/partners/37fb6949-d8bb-11ed-8347-d21c9f8d80e1/auth?${new URLSearchParams(
         params
       ).toString()}`
     );
