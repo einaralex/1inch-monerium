@@ -78,7 +78,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const cookieName = "monerium-state";
 
   const params = {
-    client_id: "7c92dcf7-b90a-4ff4-98e8-3c7d6c7f4afc",
+    client_id: "375b9372-d8bb-11ed-8347-d21c9f8d80e1",
     redirect_uri: redirectUri,
     code_challenge: codeChallenge,
     code_challenge_method: "S256",
